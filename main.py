@@ -20,7 +20,13 @@ title.pack(padx=10, pady=10)
 
 # Link input 
 link = customtkinter.CTkEntry(app, width=350, height=40)
-link.pack
+link.pack()
+
+
+
+
+
+
 
 # Run app
 app.mainloop()
