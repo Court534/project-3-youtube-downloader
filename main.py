@@ -12,7 +12,8 @@ def startDownload():
         # Makes sure the title is white and appears once downloaded
         title.configure(text=ytObject.title, text_color="white")
         finishedLabel.configure(text="")
-        video.download()
+        # Creates a download folder for the YT videos
+        video.download("./Downloads")
         # Once the video is downloaded you get a success message in green
         finishedLabel.configure(text="Video Downloaded!", text_color="green")
     except:
@@ -33,6 +34,9 @@ def on_progress(stream, chunk, bytes_remaining):
     percentage.configure(text=per + "%")
     # Force an update of the GUI
     percentage.update()
+    
+    # Update progress bar
+    progressBar.set(float(percentage_completion) / 100)
   
 # System setting (This will adapt to the users system setting e.g light/dark mode)
 customtkinter.set_appearance_mode("System")
