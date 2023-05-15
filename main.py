@@ -2,6 +2,19 @@ import tkinter
 import customtkinter
 from pytube import YouTube
 
+# Download function
+def startDownload():
+    try:
+        ytLink = link.get()
+        ytObject = YouTube(ytLink)
+        video = ytObject.streams.get_highest_resolution()
+        video.download()
+    except:
+        print("YouTube link is invalid")
+    print("Download Complete!")
+        
+        
+
 # System setting (This will adapt to the users system setting e.g light/dark mode)
 customtkinter.set_appearance_mode("System")
 
@@ -15,12 +28,17 @@ app.title("Youtube Downloader")
 
 # Adding UI elements 
 title = customtkinter.CTkLabel(app, text="Insert a Youtube link")
+
 # Adding padding
 title.pack(padx=10, pady=10)
 
 # Link input 
-link = customtkinter.CTkEntry(app, width=350, height=40)
+url_var = tkinter.StringVar()
+link = customtkinter.CTkEntry(app, width=350, height=40, textvariable=url_var)
 link.pack()
+
+# Download button
+download = customtkinter.CTkButton(app, text="Download", command=startDownload)
 
 
 
