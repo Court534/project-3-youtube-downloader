@@ -39,6 +39,7 @@ link.pack()
 
 # Download button
 download = customtkinter.CTkButton(app, text="Download", command=startDownload)
+download.pack(padx=10, pady=10)
 
 
 
